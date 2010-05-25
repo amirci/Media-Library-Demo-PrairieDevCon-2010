@@ -1,0 +1,38 @@
+Media Library BDD Demo for PrairieDevCon - Regina - 2010
+
+Author: Amir Barylko
+Contact: amir@barylko.com
+
+The source in this repository inteds to illustrate the use of BDD.
+
+Folder structure of the project:
+	MediaLibrary
+		+-- MavenThought.MediaLibrary.sln : Main solution file
+		+-- Rakefile: Main rake file to launch build, test, etc. Do rake -T to get all the tasks available.
+		+-- MavenThought.MediaLibrary.msbuild : MsBuild main file (use rake when possible)
+		+ main: Project files included in the solution
+		+ test: Test project files included in the solution
+		+ lib: Dependencies used by all the projects (nhibernate, nunit, mbunit, etc)
+		+ tools: Tools used to run tests, msbuild tasks, etc.
+		
+
+Prerequisites to run it:
+	* Rake: Install ruby or iron ruby with ruby gems to get rake.
+	
+Prerequisites to modify it:
+	* Gallio: Gallio version 3.2.420 (or higher) is required, u can download from the development builds on the page.
+	* VS 2008 SP1
+	* Specflow
+		
+Sanity check:
+	* From command prompt, on the root of the project run "rake -T", u should see all the tasks.
+	* From command prompt, on the root of the project run "rake build"
+	* From command prompt, on the root of the project run "rake test:all", all tests should run, u should see the output on the command window.
+	* From VS start the website project, should keep running on port 1591 by default, u can close the bowser window.
+	* From command prompt, on the root of the project run "rake test:features", all the features should run, u should see the browser 
+	  appear and dissaper, and the output on the command window.
+	  
+	
+Any comments, bugs, issues, please let me know.
+
+Enjoy.
