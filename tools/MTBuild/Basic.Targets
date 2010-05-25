@@ -5,8 +5,12 @@
 		<Solutions Include="**\*.sln"/>
 	</ItemGroup>
 
+	<PropertyGroup>
+		<Configuration Condition="$(Configuration) == ''">Debug</Configuration>
+	</PropertyGroup>
+	
 	<Target Name="Build">
-		<MSBuild Projects="@(Solutions)" Properties="Configuration=Release"/>
+		<MSBuild Projects="@(Solutions)" Properties="Configuration=$(Configuration)"/>
 	</Target>
 
 	<Target Name="Clean">
