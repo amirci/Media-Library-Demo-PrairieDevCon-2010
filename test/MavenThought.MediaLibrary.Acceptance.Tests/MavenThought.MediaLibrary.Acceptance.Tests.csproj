@@ -35,6 +35,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\nhibernate\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Cassini, Version=1.0.40305.0, Culture=neutral, PublicKeyToken=132a282791bfaeb7">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Cassini\Cassini.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\MavenThought.Commons\Castle.DynamicProxy2.dll</HintPath>

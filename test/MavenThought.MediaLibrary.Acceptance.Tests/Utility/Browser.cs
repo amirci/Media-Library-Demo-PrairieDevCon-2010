@@ -1,4 +1,5 @@
 using System;
+using Cassini;
 using TechTalk.SpecFlow;
 using WatiN.Core;
 
@@ -12,7 +13,7 @@ namespace MavenThought.MediaLibrary.Acceptance.Tests.Utility
         /// <summary>
         /// Main URL for the application
         /// </summary>
-        private const string ApplicationURL = "http://localhost:1591";
+        private const string ApplicationURL = "http://localhost:8091";
 
         /// <summary>
         /// Browser used or the tests
@@ -23,6 +24,11 @@ namespace MavenThought.MediaLibrary.Acceptance.Tests.Utility
             
             set { FeatureContext.Current["browser"] = value;  }
         }
+
+        /// <summary>
+        /// Get the web server
+        /// </summary>
+        protected static Server WebServer { get; private set; }
 
         /// <summary>
         /// Go to a path in the application
@@ -39,6 +45,13 @@ namespace MavenThought.MediaLibrary.Acceptance.Tests.Utility
         /// </summary>
         public static void InitializeBrowser()
         {
+            var physicalPath = @"C:\Workbench\MavenThought\Presentations\PrairieDevCon 2010\BDD\Git MediaLibrary\main\MavenThought.MediaLibrary.WebClient";
+            //var physicalPath = @"..\..\..\..\main\MavenThought.MediaLibrary.WebClient\bin";//
+            
+            WebServer = new Server(8091, "/", physicalPath);
+
+            WebServer.Start();
+
             Instance = new IE(ApplicationURL);
         }
 
@@ -48,6 +61,8 @@ namespace MavenThought.MediaLibrary.Acceptance.Tests.Utility
         public static void ShutdownBrowser()
         {
             Instance.Close();
+
+            WebServer.Stop();
         }
     }
 }

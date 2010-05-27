@@ -3,5 +3,3 @@
 *.cache
 TestResult.xml
 _ReSharper.*
-bin
-obj
