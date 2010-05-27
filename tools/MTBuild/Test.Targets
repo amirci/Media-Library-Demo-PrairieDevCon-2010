@@ -11,7 +11,7 @@
 
 	<Target Name="Test">
 		<ItemGroup>
-		  <TestAssemblies Include="test\**\bin\release\*.Tests.dll" 
+		  <TestAssemblies Include="test\**\bin\$(Configuration)\*.Tests.dll" 
 						  Exclude="test\**\*.Acceptance.Tests.dll"/>
 		</ItemGroup>
 		<Gallio Files="@(TestAssemblies)" IgnoreFailures="true">
