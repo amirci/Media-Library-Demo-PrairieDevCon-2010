@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Reflection;
 using Cassini;
 using TechTalk.SpecFlow;
 using WatiN.Core;
@@ -13,9 +12,27 @@ namespace MavenThought.MediaLibrary.Acceptance.Tests.Utility
     public class Browser
     {
         /// <summary>
+        /// Path to find the web application
+        /// </summary>
+        const string relativePath = @"main\MavenThought.MediaLibrary.WebClient";
+
+        /// <summary>
+        /// Port to use
+        /// </summary>
+        private const int Port = 8091;
+
+        /// <summary>
         /// Main URL for the application
         /// </summary>
-        private const string ApplicationURL = "http://localhost:8091";
+        private static readonly string ApplicationURL = string.Format("http://localhost:{0}", Port);
+
+        /// <summary>
+        /// Browser initialization
+        /// </summary>
+        static Browser()
+        {
+            WebServer = new Server(Port, "/", GetPhysicalPath());
+        }
 
         /// <summary>
         /// Browser used or the tests
@@ -47,14 +64,6 @@ namespace MavenThought.MediaLibrary.Acceptance.Tests.Utility
         /// </summary>
         public static void InitializeBrowser()
         {
-            //var physicalPath = @"C:\Workbench\MavenThought\Presentations\PrairieDevCon 2010\BDD\Git MediaLibrary\main\MavenThought.MediaLibrary.WebClient";
-            const string relativePath = @"..\..\..\..\main\MavenThought.MediaLibrary.WebClient";
-            
-            // var physicalPath = string.Format("{0}{1}{2}", Directory.GetCurrentDirectory(), Path.DirectorySeparatorChar, relativePath);
-            var physicalPath = @"C:\Workbench\MavenThought\Media-Library-Demo-PrairieDevCon-2010\main\MavenThought.MediaLibrary.WebClient";
-            
-            WebServer = new Server(8091, "/", physicalPath);
-
             WebServer.Start();
 
             Instance = new IE(ApplicationURL);
@@ -68,6 +77,21 @@ namespace MavenThought.MediaLibrary.Acceptance.Tests.Utility
             Instance.Close();
 
             WebServer.Stop();
+        }
+
+        /// <summary>
+        /// Calculates the physical path for the web application
+        /// </summary>
+        /// <returns>A string with the path</returns>
+        private static string GetPhysicalPath()
+        {
+            var dir = Directory.GetCurrentDirectory();
+
+            var index = dir.IndexOf("test");
+
+            dir = dir.Remove(index);
+
+            return Path.Combine(dir, relativePath);
         }
     }
 }
