@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Reflection;
 using Cassini;
 using TechTalk.SpecFlow;
 using WatiN.Core;
@@ -45,8 +47,11 @@ namespace MavenThought.MediaLibrary.Acceptance.Tests.Utility
         /// </summary>
         public static void InitializeBrowser()
         {
-            var physicalPath = @"C:\Workbench\MavenThought\Presentations\PrairieDevCon 2010\BDD\Git MediaLibrary\main\MavenThought.MediaLibrary.WebClient";
-            //var physicalPath = @"..\..\..\..\main\MavenThought.MediaLibrary.WebClient\bin";//
+            //var physicalPath = @"C:\Workbench\MavenThought\Presentations\PrairieDevCon 2010\BDD\Git MediaLibrary\main\MavenThought.MediaLibrary.WebClient";
+            const string relativePath = @"..\..\..\..\main\MavenThought.MediaLibrary.WebClient";
+            
+            // var physicalPath = string.Format("{0}{1}{2}", Directory.GetCurrentDirectory(), Path.DirectorySeparatorChar, relativePath);
+            var physicalPath = @"C:\Workbench\MavenThought\Media-Library-Demo-PrairieDevCon-2010\main\MavenThought.MediaLibrary.WebClient";
             
             WebServer = new Server(8091, "/", physicalPath);
 
