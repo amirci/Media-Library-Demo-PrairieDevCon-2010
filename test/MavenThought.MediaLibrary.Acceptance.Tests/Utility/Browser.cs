@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Cassini;
+using MavenThought.Commons.Extensions;
 using TechTalk.SpecFlow;
 using WatiN.Core;
 
@@ -19,7 +20,7 @@ namespace MavenThought.MediaLibrary.Acceptance.Tests.Utility
         /// <summary>
         /// Port to use
         /// </summary>
-        private const int Port = 8091;
+        private static int Port = 8091;
 
         /// <summary>
         /// Main URL for the application
@@ -31,7 +32,14 @@ namespace MavenThought.MediaLibrary.Acceptance.Tests.Utility
         /// </summary>
         static Browser()
         {
-            WebServer = new Server(Port, "/", GetPhysicalPath());
+            // Get the path to the application
+            var physicalPath = GetPhysicalPath();
+
+            // Update database file configuration in the boo file
+            UpdateConfiguraiton(physicalPath);
+
+            // Initialize the web server
+            WebServer = new Server(Port, "/", physicalPath);
         }
 
         /// <summary>
@@ -92,6 +100,26 @@ namespace MavenThought.MediaLibrary.Acceptance.Tests.Utility
             dir = dir.Remove(index);
 
             return Path.Combine(dir, relativePath);
+        }
+
+        /// <summary>
+        /// Updates the boo configuration with the path to the storage
+        /// </summary>
+        /// <param name="applicationPath">Path to the web application</param>
+        private static void UpdateConfiguraiton(string applicationPath)
+        {
+            // Get the file name
+            var booConfigFileName = Path.Combine(applicationPath, "Global.boo");
+
+            // Read the file and change the line
+            var configFile = File.ReadAllLines(booConfigFileName);
+
+            var index = configFile.IndexOf(line => line.Contains("databaseFile"));
+
+            configFile[index] = string.Format("  databaseFile = \"{0}\"",Storage.DatabaseFile.Replace("\\", "/"));
+
+            // Write the file
+            File.WriteAllLines(booConfigFileName, configFile);
         }
     }
 }
