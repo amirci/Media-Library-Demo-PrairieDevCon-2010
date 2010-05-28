@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Cassini;
 using MavenThought.Commons.Extensions;
@@ -95,7 +96,7 @@ namespace MavenThought.MediaLibrary.Acceptance.Tests.Utility
         {
             var dir = Directory.GetCurrentDirectory();
 
-            var index = dir.IndexOf("test");
+            var index = dir.LastIndexOf("test");
 
             dir = dir.Remove(index);
 
