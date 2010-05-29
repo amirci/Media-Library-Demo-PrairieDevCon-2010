@@ -7,13 +7,13 @@ The source in this repository inteds to illustrate the use of BDD.
 
 Folder structure of the project:
 	MediaLibrary
-		+-- MavenThought.MediaLibrary.sln : Main solution file
-		+-- Rakefile: Main rake file to launch build, test, etc. Do rake -T to get all the tasks available.
-		+-- MavenThought.MediaLibrary.msbuild : MsBuild main file (use rake when possible)
-		+ main: Project files included in the solution
-		+ test: Test project files included in the solution
-		+ lib: Dependencies used by all the projects (nhibernate, nunit, mbunit, etc)
-		+ tools: Tools used to run tests, msbuild tasks, etc.
+		--- MavenThought.MediaLibrary.sln : Main solution file
+		--- Rakefile: Main rake file to launch build, test, etc. Do rake -T to get all the tasks available.
+		--- MavenThought.MediaLibrary.msbuild : MsBuild main file (use rake when possible)
+		+-- main: Project files included in the solution
+		+-- test: Test project files included in the solution
+		+-- lib: Dependencies used by all the projects (nhibernate, nunit, mbunit, etc)
+		+-- tools: Tools used to run tests, msbuild tasks, etc.
 		
 
 Prerequisites to run it:
@@ -40,6 +40,10 @@ Sanity check:
 	  
 		Tests run: 3, Errors: 0, Failures: 0, Inconclusive: 1, Time.....
 	
+Please read my post with the introduction to the BDD session at http://orthocoders.com/2010/05/26/real-world-bdd-introduction.
+
+If u r attending the session at the conference and have any issues setting up the code feel free to find me and letting me know, I'll help you with the setup.
+
 Any comments, bugs, issues, please let me know.
 
 Enjoy.
