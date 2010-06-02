@@ -102,6 +102,9 @@
     <Compile Include="When_movie_is_created.cs">
       <DependentUpon>PersistentMovieSpecification.cs</DependentUpon>
     </Compile>
+    <Compile Include="When_persistent_movie_is_added_to_the_storage.cs">
+      <DependentUpon>PersistentMovieSpecification.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\main\MavenThought.MediaLibrary.Core\MavenThought.MediaLibrary.Core.csproj">
