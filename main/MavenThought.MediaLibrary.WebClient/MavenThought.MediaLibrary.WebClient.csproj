@@ -165,6 +165,9 @@
     <None Include="Global.boo">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Views\Movies\Create.haml">
+      <SubType>ASPXCodeBehind</SubType>
+    </None>
     <Content Include="Views\Shared\Site.Master" />
   </ItemGroup>
   <ItemGroup>

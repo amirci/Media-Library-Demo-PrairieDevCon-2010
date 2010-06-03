@@ -35,6 +35,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\MavenThought.Testing\Gallio.dll</HintPath>
     </Reference>
+    <Reference Include="MavenThought.Commons, Version=0.2.0.48607, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\MavenThought.Commons\MavenThought.Commons.dll</HintPath>
+    </Reference>
     <Reference Include="MavenThought.Commons.Testing, Version=0.2.0.41807, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\MavenThought.Testing\MavenThought.Commons.Testing.dll</HintPath>

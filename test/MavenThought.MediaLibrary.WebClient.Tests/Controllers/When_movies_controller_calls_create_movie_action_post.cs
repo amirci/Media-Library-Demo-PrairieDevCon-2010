@@ -1,16 +1,16 @@
 using MavenThought.MediaLibrary.Domain;
 using MbUnit.Framework;
 using MvcContrib.TestHelper;
-using MavenThought.Commons.Testing;
 using Rhino.Mocks;
+using MavenThought.Commons.Testing;
 
 namespace MavenThought.MediaLibrary.WebClient.Tests.Controllers
 {
     /// <summary>
-    /// Specification when calling create with POST
+    /// Specification when calling Movies/Create with a form POST
     /// </summary>
     [Specification]
-    public class When_movies_controller_call_create_action_with_post : MoviesControllerSpecification
+    public class When_movies_controller_calls_create_movie_action_post : MoviesControllerSpecification
     {
         /// <summary>
         /// Actual title to add
@@ -18,10 +18,10 @@ namespace MavenThought.MediaLibrary.WebClient.Tests.Controllers
         private readonly string _title;
 
         /// <summary>
-        /// Initializes a new instance of <see cref="When_movies_controller_call_create_action_with_post"/> class.
+        /// Initializes a new instance of <see cref="When_movies_controller_calls_create_movie_action_post"/> class.
         /// </summary>
         /// <param name="title">Title to use</param>
-        public When_movies_controller_call_create_action_with_post([RandomStrings(Count = 10, Pattern = "The Great [a-z]{8}")]string title)
+        public When_movies_controller_calls_create_movie_action_post([RandomStrings(Count = 10, Pattern = "The Great [a-z]{8}")]string title)
         {
             this._title = title;
         }
@@ -32,6 +32,7 @@ namespace MavenThought.MediaLibrary.WebClient.Tests.Controllers
         [It]
         public void Should_return_the_form_to_create()
         {
+            this.ActualResult.AssertHttpRedirect().ToUrl("Index");
         }
 
         /// <summary>
@@ -40,6 +41,9 @@ namespace MavenThought.MediaLibrary.WebClient.Tests.Controllers
         [It]
         public void Should_add_the_movie_to_the_library()
         {
+            var movieWithSameTitle = Arg<IMovie>.Matches(m => m.Title == this._title);
+
+            Dep<IMediaLibrary>().AssertWasCalled(lib => lib.Add(movieWithSameTitle));
         }
 
         /// <summary>

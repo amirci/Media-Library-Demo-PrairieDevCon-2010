@@ -52,14 +52,6 @@ namespace MavenThought.MediaLibrary.Storage.NHibernate.Tests
         }
 
         /// <summary>
-        /// Builds the element
-        /// </summary>
-        /// <returns>
-        /// An instance of the element
-        /// </returns>
-        protected abstract T Build();
-
-        /// <summary>
         /// Deletes the database if exists and creates the schema
         /// </summary>
         /// <param name="config">

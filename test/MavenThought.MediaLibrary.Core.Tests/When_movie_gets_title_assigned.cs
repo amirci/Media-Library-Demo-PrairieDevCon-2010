@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using MbUnit.Framework;
 using MavenThought.Commons.Testing;
 using SharpTestsEx;
@@ -15,11 +17,15 @@ namespace MavenThought.MediaLibrary.Core.Tests
         /// </summary>
         private readonly string _newTitle;
 
+        private readonly DateTime _releaseDate;
+
         /// <summary>
         /// Initializes <see cref="When_movie_gets_title_assigned"/>
         /// </summary>
         /// <param name="newTitle">New title to use</param>
-        public When_movie_gets_title_assigned([RandomStrings(Count = 10, Pattern = "The Adventures Of [a-z]{8}")]string newTitle)
+        /// <param name="releaseDate"></param>
+        public When_movie_gets_title_assigned(
+                [RandomStrings(Count = 10, Pattern = "The Adventures Of [a-z]{8}")]string newTitle)
         {
             _newTitle = newTitle;
         }

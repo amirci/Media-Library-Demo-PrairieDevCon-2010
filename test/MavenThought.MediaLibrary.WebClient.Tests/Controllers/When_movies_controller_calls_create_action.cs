@@ -1,5 +1,5 @@
-using MvcContrib.TestHelper;
 using MavenThought.Commons.Testing;
+using MvcContrib.TestHelper;
 
 namespace MavenThought.MediaLibrary.WebClient.Tests.Controllers
 {
@@ -15,6 +15,7 @@ namespace MavenThought.MediaLibrary.WebClient.Tests.Controllers
         [It]
         public void Should_return_the_form_to_create()
         {
+            this.ActualResult.AssertViewRendered();
         }
 
         /// <summary>
@@ -22,6 +23,7 @@ namespace MavenThought.MediaLibrary.WebClient.Tests.Controllers
         /// </summary>
         protected override void WhenIRun()
         {
+            this.ActualResult = this.Sut.Create();
         }
     }
 }

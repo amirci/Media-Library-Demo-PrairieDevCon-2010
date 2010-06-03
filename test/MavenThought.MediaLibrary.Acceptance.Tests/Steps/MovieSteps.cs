@@ -1,5 +1,4 @@
 using MavenThought.MediaLibrary.Acceptance.Tests.PageObjects;
-using SharpTestsEx;
 using TechTalk.SpecFlow;
 
 namespace MavenThought.MediaLibrary.Acceptance.Tests.Steps
@@ -7,37 +6,39 @@ namespace MavenThought.MediaLibrary.Acceptance.Tests.Steps
     /// <summary>
     /// Steps related to movie
     /// </summary>
+    [Binding]
     public class MovieSteps
     {
         /// <summary>
-        /// Setup the movies page
+        /// Default constructor
         /// </summary>
         public MovieSteps()
         {
-            this.BrowsePage = new BrowseMoviesPage();
+            this.Page = new AddMoviePage();
         }
 
         /// <summary>
-        /// Gets the movies page
+        /// Gets the add movies page
         /// </summary>
-        protected BrowseMoviesPage BrowsePage { get; private set; }
+        protected AddMoviePage Page { get; private set; }
 
         /// <summary>
-        /// Checks the image for the case is empty
+        /// Enters the movie title
         /// </summary>
-        [Then(@"the case for (.*) should be empty")]
-        public void AssertCaseIsEmpty(string title)
+        /// <param name="title"></param>
+        [When(@"I enter (.*) in the title")]
+        public void EnterMovieTitle(string title)
         {
-            this.BrowsePage.HasEmptyCase(title).Should().Be.True();
+            this.Page.Title = title;
         }
 
         /// <summary>
-        /// Checks the image for the case is empty
+        /// Submit the new movie to the library
         /// </summary>
-        [Then(@"the case for (.*) should not be empty")]
-        public void AssertCaseIsNotEmpty(string title)
+        [When(@"I click Submit")]
+        public void SubmitNewMovie()
         {
-            this.BrowsePage.HasEmptyCase(title).Should().Be.False();
-        } 
+            this.Page.Submit();
+        }
     }
 }

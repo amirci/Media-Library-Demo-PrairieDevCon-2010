@@ -1,4 +1,5 @@
-﻿Feature: Addition
+﻿@wip
+Feature: Addition
 	In order to make my library grow
 	As a registered user
 	I want to add movies to the library
@@ -9,4 +10,3 @@
 		And I enter Young Frankestein in the title
 		And I click Submit
 		Then I should see Young Frankestein in the listing
-		And the case for Young Frankestein should not be empty

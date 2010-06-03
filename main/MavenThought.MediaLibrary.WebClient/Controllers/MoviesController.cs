@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using MavenThought.MediaLibrary.Core;
 using MavenThought.MediaLibrary.Domain;
@@ -34,13 +35,27 @@ namespace MavenThought.MediaLibrary.WebClient.Controllers
         }
 
         /// <summary>
-        /// Gets the detail of one movie GET: /Movies/Details/5
+        /// Gets the form to add a movie
         /// </summary>
-        /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult Details(int id)
+        public ActionResult Create()
         {
             return View();
+        }
+
+        /// <summary>
+        /// Creates a movie using the title passed by parameter
+        /// </summary>
+        /// <param name="title"></param>
+        /// <returns></returns>
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Create(string title)
+        {
+            this._library.Add(new Movie
+                                  {
+                                      Title = title
+                                  });
+            return Redirect("Index");
         }
     }
 }

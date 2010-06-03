@@ -98,6 +98,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AddMovie.feature</DependentUpon>
     </Compile>
+    <Compile Include="PageObjects\AddMoviePage.cs" />
     <Compile Include="PageObjects\BrowseMoviesPage.cs" />
     <Compile Include="features\BrowseMovies.feature.cs">
       <AutoGen>True</AutoGen>

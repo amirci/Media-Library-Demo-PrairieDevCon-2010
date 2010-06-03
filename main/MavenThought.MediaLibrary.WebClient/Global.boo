@@ -10,4 +10,4 @@ component "MoviesController", MoviesController:
   @lifestyle = "transient"
   
 component IMediaLibrary, StorageMediaLibrary:
-  databaseFile = "C:/Documents and Settings/amirb/Local Settings/Temp/tmpA87.tmp"
+  databaseFile = "C:/Documents and Settings/amirb/Local Settings/Temp/tmp132A.tmp"

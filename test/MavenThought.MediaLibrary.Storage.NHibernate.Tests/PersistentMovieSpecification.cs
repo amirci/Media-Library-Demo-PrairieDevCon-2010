@@ -8,13 +8,5 @@ namespace MavenThought.MediaLibrary.Storage.NHibernate.Tests
     public abstract class PersistentMovieSpecification
         : BaseStorageSpecification<Movie>
     {
-        /// <summary>
-        /// Creates a movie
-        /// </summary>
-        /// <returns></returns>
-        protected override Movie Build()
-        {
-            return new Movie();
-        }
     }
 }

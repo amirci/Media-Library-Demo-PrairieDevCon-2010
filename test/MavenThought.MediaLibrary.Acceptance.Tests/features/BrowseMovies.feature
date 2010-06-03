@@ -1,5 +1,4 @@
-﻿@wip
-Feature: Browse Movies
+﻿Feature: Browse Movies
 	As a User
 	I want to Browse Movies
 	So I can see the contents of the library
